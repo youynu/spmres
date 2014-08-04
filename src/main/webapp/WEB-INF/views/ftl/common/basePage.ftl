@@ -7,6 +7,7 @@
 	         <@block name="meta">
 	        	<meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="renderer" content="webkit">
     			<meta http-equiv="Cache-Control" content="no-store"/>
     			<meta http-equiv="Pragma" content="no-cache"/>
     			<meta http-equiv="Expires" content="0"/>
@@ -37,6 +38,7 @@
 	 		</script>
 	    </head>
 	    <body <@block name="body"/>>
+	     	
 	        <#nested/>
 	        <@genCSS/>
 	        <@genJS/>

@@ -20,7 +20,7 @@
 		<li class="left"><a href="">联系我们<br><span>CONTACT</span></a></li>
 		<li class="left"><a href="">留言板<br><span>MESSAGE</span></a></li>
 		</ul>
-		
+		<br/>
 		<#include "dynamic-pic.ftl">
 	</div>
 	

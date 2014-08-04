@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youymi.app.stars.data.dao.customized.PGMMapper" >
+
+  <resultMap id="customer" type="com.youymi.app.stars.data.ao.CustomerAO" >
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="contrator" jdbcType="VARCHAR" property="contrator" />
+    <result column="contrator_phone" jdbcType="VARCHAR" property="contratorPhone" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+  </resultMap>
+  
+   <resultMap id="orgi_customer" type="com.youymi.app.stars.data.entity.gen.Customer">
+    
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="contrator" jdbcType="VARCHAR" property="contrator" />
+    <result column="contrator_phone" jdbcType="VARCHAR" property="contratorPhone" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+  </resultMap>
+   <resultMap id="orgi_role" type="com.youymi.app.stars.data.entity.gen.Role" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_no" property="roleNo" jdbcType="VARCHAR" />
+    <result column="role_description" property="roleDescription" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="role" type="com.youymi.app.stars.data.ao.RoleAO" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_no" property="roleNo" jdbcType="VARCHAR" />
+    <result column="role_description" property="roleDescription" jdbcType="VARCHAR" />
+    <result column="user_id" property="dataId" jdbcType="BIGINT" />
+  </resultMap>
+  
+  
+   <select id="getCustomerList" resultMap="customer" parameterType="map" >    
+   	select * from pgm_customer 
+    where 1 = 1
+      <if test="search != null">
+        <!-- 如果不是我发布的情况下  -->
+        <if test="search.customerName != null ">
+        	<!-- 
+            	and ((a.id=c.blog_id and c.viewer_Code = #{userCode} and c.viewer_Type='99'))
+             -->
+			and customer_name like '%${search.customerName}%' 
+        </if>
+      </if>  
+    limit #{page.pageBegin} , #{page.pageSize}
+  </select>
+  
+  <select id="countQueryRole" parameterType="map" resultType="java.lang.Integer" >
+    select count(r.id) from  t_user u left join t_user_role ur on u.id = ur.user_id
+	left join t_role r on r.id = ur.role_id
+	where u.id = #{userId}  and r.role_no = #{roleNo}
+  </select>
+  
+   <select id="getRoleListForRoleAssign" parameterType="map" resultMap="role" >
+    select * from  t_role a left join 
+	(select * from   t_user_role ur where ur.user_id = #{userId} ) b
+		on a.id = b.role_id
+  </select>
+  <select id="countQueryApp" parameterType="map" resultType="java.lang.Integer" >
+   select count(a.id) from  t_user_role ur join t_role_app ra on ur.role_id = ra.role_id
+	join t_app a on a.id = ra.app_id 
+	where ur.user_id = #{userId}  and a.path = #{appPath}
+	
+  </select>
+  
+ 
+  
+</mapper>

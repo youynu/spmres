@@ -1,0 +1,99 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+	http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/spring/*.properties</value>
+				<value>classpath:env.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<context:component-scan base-package="com.youymi.app">
+		
+	</context:component-scan>
+
+	<mvc:annotation-driven />
+
+	<mvc:default-servlet-handler />
+
+
+
+	<!--JSP 视图解析器 <bean id="viewResolverCommon" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" 
+		value=".jsp" /> <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="order" value="1" /> </bean> -->
+	<!-- 配置freeMarker的模板路径 -->
+	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="WEB-INF/views/ftl/" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="block" value-ref="block" />
+				<entry key="override" value-ref="override" />
+				<entry key="extends" value-ref="extends" />
+
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+				<!-- 服务路径 -->
+				<entry key="servePath" value="${context.path}" />
+				<!-- 静态资源服务路径 -->
+				<entry key="staticPath" value="${context.path}/static" />
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<!-- 每隔5秒检查模板是否更新,如果不经常更新模板可将更新的延迟时间设定长一点生成环境一定要设置长一点，24个小时以上吧 -->
+				<prop key="template_update_delay">5</prop>
+				<!-- 指定地区语言环境，我们的语言是中文 -->
+				<prop key="locale">zh_CN</prop>
+				<!-- 指定模板文件的编码格式 -->
+				<prop key="default_encoding">UTF-8</prop>
+				<!-- 指定输出编码 -->
+				<prop key="output_encoding">UTF-8</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- freemarker视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
+		<property name="requestContextAttribute" value="rc" />
+	</bean>
+
+	<!-- FreeMarker XML 转义处理 -->
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+	<!-- freemarker模板重写 -->
+	<bean id="block"
+		class="cn.org.rapid_framework.freemarker.directive.BlockDirective" />
+	<bean id="override"
+		class="cn.org.rapid_framework.freemarker.directive.OverrideDirective" />
+	<bean id="extends"
+		class="cn.org.rapid_framework.freemarker.directive.ExtendsDirective" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.youymi.app.mvc.interceptor.LoginInterceptor">
+				<property name="pattern"
+					value="(.*test.*)|(.*appuiinteg$)|(.*login.*)|(.*pkiLogin.*)|(.*mobile.*)|(.*error.*)|(.*static.*)|(.*common.*)|(.*checkup.*)" />
+				<property name="redirectURL" value="${login.page}" />
+				<property name="loginTimeoutPage" value="${login.timeout.page}" />
+				
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

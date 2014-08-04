@@ -1,0 +1,3 @@
+<form class='j-common-form password' action='${servePath}/user/save' method='post'>
+ 敬请期待...
+</form>

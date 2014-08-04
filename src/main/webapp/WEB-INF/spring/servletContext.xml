@@ -84,16 +84,18 @@
 	<bean id="extends"
 		class="cn.org.rapid_framework.freemarker.directive.ExtendsDirective" />
 
+	<!--  
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.youymi.app.mvc.interceptor.LoginInterceptor">
 				<property name="pattern"
-					value="(.*test.*)|(.*appuiinteg$)|(.*login.*)|(.*pkiLogin.*)|(.*mobile.*)|(.*error.*)|(.*static.*)|(.*common.*)|(.*checkup.*)" />
+					value="(.*test.*)|(.*appuiinteg$)|(.*login.*)|(.*pkiLogin.*)|(.*mobile.*)|(.*error.*)|(.*static.*)|(.*common.*)|(.*home.*)" />
 				<property name="redirectURL" value="${login.page}" />
 				<property name="loginTimeoutPage" value="${login.timeout.page}" />
 				
 			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	-->
 </beans>

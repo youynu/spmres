@@ -133,7 +133,7 @@
 			<version>5.15.1</version> </dependency> -->
 	</dependencies>
 	<build>
-		<finalName>allstars</finalName>
+		<finalName>spmres</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

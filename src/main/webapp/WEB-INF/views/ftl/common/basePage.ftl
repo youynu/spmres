@@ -19,9 +19,7 @@
     		</@block>
     		
     		<@block name="commonCSS">
-    		 <#-- 
-	            <link type='text/css' rel='stylesheet' href='${staticPath}/front-framework/pc/css/common/common${debug}.css'/>
-	          -->
+    		 
      		</@block> 
     	
 	         

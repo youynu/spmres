@@ -62,6 +62,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	        }
 		 
 		Object o = request.getSession().getAttribute("currentUser");
+		
 		if (o != null) {
 			return true;
 			

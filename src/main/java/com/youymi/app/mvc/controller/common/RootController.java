@@ -27,20 +27,11 @@ public class RootController {
 	public ModelAndView index(Model model) {
 
 		ModelAndView view = new ModelAndView();
-		view.setViewName("forward:/pgm/index");
+		view.setViewName("forward:/home");
 
 		return view;
 	}
-	
-	@RequestMapping(value = "")
-	public ModelAndView index2(Model model) {
-
-		ModelAndView view = new ModelAndView();
-		view.setViewName("forward:/pgm/index");
-
-		return view;
-	}
-	
+ 
 	@RequestMapping(value = "/about")
 	public ModelAndView about(Model model) {
 

@@ -44,6 +44,7 @@ public enum MVCViewName {
 	PGM_CUSTOMER_INDEX("/pgm/customer/index"),
 	PGM_CUSTOMER_MODAL_MDVIEWFORM("/pgm/customer/modal/md-view-form"),
 	PGM_CUSTOMER_VIEWFORM("/pgm/customer/view-form"),
+	PGM_HOME_INDEX("/pgm/home/index"),
 	PGM_ORGANIZATION_INDEX("/pgm/organization/index"),
 	PGM_USER_DIALOGROLE("/pgm/user/dialog-role"),
 	PGM_USER_FORM("/pgm/user/form"),

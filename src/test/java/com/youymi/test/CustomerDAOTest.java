@@ -15,7 +15,6 @@ import com.youymi.app.stars.data.ao.OrganizationAO;
 import com.youymi.app.stars.data.dao.gen.CustomerMapper;
 import com.youymi.app.stars.data.entity.gen.Customer;
 import com.youymi.app.stars.data.entity.gen.CustomerExample;
-import com.youymi.app.stars.data.entity.gen.DataStore;
 import com.youymi.app.stars.service.IOrganizationService;
 import com.youymi.app.stars.service.ba.IDataStoreService;
 import com.youymi.youymiframework.service.ServiceResult;

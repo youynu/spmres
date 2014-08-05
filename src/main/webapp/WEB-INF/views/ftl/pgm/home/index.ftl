@@ -1,12 +1,8 @@
 <#include "/common/basePage.ftl">
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<!-- 可选的Bootstrap主题文件（一般不用引入） -->
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<@addCSS ["/css/home"]/>
+<@addCSS ["/lib/bootstrap/css/bootstrap","/lib/bootstrap/css/bootstrap-responsive","/css/home"]/>
+<@addJS ["/lib/bootstrap/js/bootstrap","/js/pgm"]/>
  
- <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 
 <@common title="贵研资源首页">
 	<div class="header center">
 		<a href="http://127.0.0.1/phpcms"><img src="${staticPath}/images/logo.jpg">贵研资源</a>

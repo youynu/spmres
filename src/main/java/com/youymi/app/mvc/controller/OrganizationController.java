@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.youymi.app.mvc.Constant;
 import com.youymi.app.mvc.ftl.gen.MVCViewName;
 import com.youymi.app.mvc.ftl.tm.RoleCheck;
 import com.youymi.app.stars.data.ao.OrganizationAO;
-import com.youymi.app.stars.data.entity.gen.User;
 import com.youymi.app.stars.service.IOrganizationService;
-import com.youymi.app.stars.service.UserService;
 import com.youymi.youymiframework.service.ServiceResult;
 
 @Controller
@@ -43,10 +40,14 @@ public class OrganizationController {
 	@Resource
 	private IOrganizationService organizationService;
 	
+	public OrganizationController() {
+		log.info("init org contorller");
+	}
+	
 	@RequestMapping(value = "/index")
 	public ModelAndView index(HttpServletRequest request, Model model) {
 		ModelAndView mv = new ModelAndView();
-		User u = (User) session.getAttribute(Constant.KEY_LOGIN_USER);
+		//User u = (User) session.getAttribute(Constant.KEY_LOGIN_USER);
 		
 //		if (u != null) {
 //			ServiceResult<Boolean> ret = userService.checkUserApp(u.getId(), request.getRequestURI().replace(

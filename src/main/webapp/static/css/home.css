@@ -4,6 +4,58 @@ padding: 0;
 background: #fffde4 url(../images/bodyBg.jpg) repeat-x;
 }
 
+.spmnews {
+	width: 60%;
+}
+.spmnews-title {
+	border-bottom: 2px solid #000;
+	padding-bottom: 3px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+
+ ul, li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.spmnews li , .goldprice li{
+	padding-left: 10px;
+height: 25px;
+line-height: 25px;
+border-bottom: 1px dashed #c5c5c5;
+vertical-align: bottom;
+/*background: url(../images/bg_repeat.gif) 0 -72px no-repeat;*/
+overflow: hidden;
+}
+
+.goldprice {
+	width: 36%;
+}
+
+
+
+.left {
+	float:left;
+}
+.right {
+	float: right;
+}
+
+.clear-both {
+	clear: both;
+}
+
+
+.footer {
+margin-top: 10px;	
+padding: 10px 0;
+border-top: 3px solid #022d6d;
+text-align: center;
+color: #666;
+}
 
 /****************************/
 /*                 		    */
@@ -51,8 +103,7 @@ a:hover {color:#5579b7;}
 .contact p{font-size:14px; color:#666; line-height:25px;} .contact .add{text-indent:48px;}
 .contact .online{background:url(../images/online.jpg) right top no-repeat; height:64px; display:block; font-size:14px;}
 .contact .online .code{margin:48px 0 0 10px; _margin-top:25px; *+margin-top:25px;}
-.footer{height:25px; background-color:#ccc; *+margin-top:80px; z-index:0;}
-.footer p{width:1002px; margin:0 auto; font-size:12px; line-height:25px; text-align:center; text-shadow: 1px 1px 0px #fff;}
+ 
 /* ============================= about ====================== */
 .aboutcon{width:992px; margin-top:15px;}
 .about_left{width:262px; margin-bottom:45px;}

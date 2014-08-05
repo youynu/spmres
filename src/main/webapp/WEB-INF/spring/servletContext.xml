@@ -62,6 +62,8 @@
 				<prop key="default_encoding">UTF-8</prop>
 				<!-- 指定输出编码 -->
 				<prop key="output_encoding">UTF-8</prop>
+				<prop key="template_update_delay">5</prop>
+				 
 			</props>
 		</property>
 	</bean>

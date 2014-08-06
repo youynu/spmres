@@ -6,9 +6,11 @@
 	        <title>${title}</title>
 	         <@block name="meta">
 	        	<meta charset="utf-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="renderer" content="webkit">
-    			<meta http-equiv="Cache-Control" content="no-store"/>
+              	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+				<meta name="renderer" content="webkit|ie-stand">
+				<meta name="description" content="贵研资源">
+				<meta name="keywords" content="贵研铂业,贵研资源">
+     			<meta http-equiv="Cache-Control" content="no-store"/>
     			<meta http-equiv="Pragma" content="no-cache"/>
     			<meta http-equiv="Expires" content="0"/>
     			<meta name="viewport" content="width=device-width, initial-scale=1.0">
